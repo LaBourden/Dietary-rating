@@ -1,11 +1,12 @@
 <!-- index.html -->
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>饮食评分计算器</title>
+    <title>Diet Score Calculator</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <style>
         body {
             background-color: #f8f9fa;
@@ -20,6 +21,7 @@
         }
         .food-item {
             margin-bottom: 10px;
+            position: relative;
         }
         .result-card {
             margin-top: 20px;
@@ -32,50 +34,96 @@
         .healthy-score {
             background-color: #f3fff3;
         }
+        .autocomplete-items {
+            position: absolute;
+            border: 1px solid #d4d4d4;
+            border-bottom: none;
+            border-top: none;
+            z-index: 99;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            max-height: 200px;
+            overflow-y: auto;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .autocomplete-items div {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #d4d4d4;
+            transition: background-color 0.2s;
+        }
+        .autocomplete-items div:hover {
+            background-color: #e9e9e9;
+        }
+        .autocomplete-active {
+            background-color: #007bff !important;
+            color: white;
+        }
+        .alert {
+            margin-top: 20px;
+        }
+        /* 自定义滚动条样式 */
+        .autocomplete-items::-webkit-scrollbar {
+            width: 8px;
+        }
+        .autocomplete-items::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .autocomplete-items::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        .autocomplete-items::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center mb-4">饮食评分计算器</h1>
+        <h1 class="text-center mb-4">Diet Score Calculator</h1>
         
         <div class="mb-4">
-            <label class="form-label">性别</label>
+            <label class="form-label">Gender</label>
             <select id="gender" class="form-select">
-                <option value="male">男</option>
-                <option value="female">女</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
             </select>
         </div>
 
         <div id="foodList">
             <div class="food-item row g-3">
                 <div class="col-md-6">
-                    <input type="text" class="form-control food-name" placeholder="食物名称">
+                    <input type="text" class="form-control food-name" placeholder="Food Name">
                 </div>
                 <div class="col-md-4">
-                    <input type="number" class="form-control food-weight" placeholder="重量(克)">
+                    <input type="number" class="form-control food-weight" placeholder="Weight (g)">
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-danger remove-food">删除</button>
+                    <button class="btn btn-danger remove-food">Delete</button>
                 </div>
             </div>
         </div>
 
-        <button id="addFood" class="btn btn-primary mt-3">添加食物</button>
-        <button id="calculate" class="btn btn-success mt-3">计算得分</button>
+        <button id="addFood" class="btn btn-primary mt-3">Add Food</button>
+        <button id="calculate" class="btn btn-success mt-3">Calculate Score</button>
+
+        <div id="alert" class="alert alert-warning" style="display: none;"></div>
 
         <div id="results" class="mt-4">
             <div class="result-card unhealthy-score">
-                <h3>不健康高脂饮食评分</h3>
-                <p>得分: <span id="unhealthyScore">0</span>/30</p>
-                <p>总死亡率风险: <span id="totalMortality">-</span></p>
-                <p>心血管疾病死亡率风险: <span id="cvdMortality">-</span></p>
+                <h3>Unhealthy High-Fat Diet Score</h3>
+                <p>Score: <span id="unhealthyScore">0</span>/30</p>
+                <p>Total Mortality Risk: <span id="totalMortality">-</span></p>
+                <p>CVD Mortality Risk: <span id="cvdMortality">-</span></p>
             </div>
             
             <div class="result-card healthy-score mt-3">
-                <h3>健康高脂饮食评分</h3>
-                <p>得分: <span id="healthyScore">0</span>/30</p>
-                <p>总死亡率风险: <span id="totalMortality2">-</span></p>
-                <p>心血管疾病死亡率风险: <span id="cvdMortality2">-</span></p>
+                <h3>Healthy High-Fat Diet Score</h3>
+                <p>Score: <span id="healthyScore">0</span>/30</p>
+                <p>Total Mortality Risk: <span id="totalMortality2">-</span></p>
+                <p>CVD Mortality Risk: <span id="cvdMortality2">-</span></p>
             </div>
         </div>
     </div>
