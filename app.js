@@ -85,7 +85,7 @@ function calculateTotalEnergy(foods) {
     let healthyEnergy = 0;
 
     foods.forEach(food => {
-        const foodData = foodData.find(f => f.name === food.name);
+        const foodData = window.foodData.find(f => f.name === food.name);
         if (foodData) {
             unhealthyEnergy += foodData.unhealthyEnergy * food.weight;
             healthyEnergy += foodData.healthyEnergy * food.weight;
@@ -102,7 +102,7 @@ function calculateNutrientPercentages(foods, totalEnergy) {
     let highQualityCarb = 0;
 
     foods.forEach(food => {
-        const foodData = foodData.find(f => f.name === food.name);
+        const foodData = window.foodData.find(f => f.name === food.name);
         if (foodData) {
             saturatedFat += foodData.saturatedFat * food.weight;
             plantProtein += foodData.plantProtein * food.weight;
