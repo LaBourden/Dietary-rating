@@ -1,0 +1,29 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>饮食评分计算器</title>
+  <style>
+    /* 基础样式（可参考网页7的表格美化技巧） */
+    .container { max-width: 600px; margin: 20px auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 8px; border: 1px solid #ddd; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>今日饮食记录</h2>
+    <form id="foodForm">
+      <input type="text" id="foodName" placeholder="食物名称" required>
+      <input type="number" id="quantity" placeholder="数量（克）" required>
+      <button type="submit">添加</button>
+    </form>
+    <table id="resultTable">
+      <thead><tr><th>食物</th><th>数量</th><th>得分</th></tr></thead>
+      <tbody></tbody>
+      <tfoot><tr><td colspan="2">总分</td><td id="totalScore">0</td></tr></tfoot>
+    </table>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
