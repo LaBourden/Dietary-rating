@@ -11,6 +11,7 @@
         body {
             background-color: #f8f9fa;
             padding: 20px;
+            font-size: 16px;
         }
         .container {
             max-width: 800px;
@@ -84,6 +85,10 @@
     <div class="container">
         <h1 class="text-center mb-4">Diet Score Calculator</h1>
         
+        <div class="alert alert-info" role="alert">
+            Note: Weight is the estimated weight of food and beverages consumed over a 24-hour period, from midnight to midnight.
+        </div>
+
         <div class="mb-4">
             <label class="form-label">Gender</label>
             <select id="gender" class="form-select">
@@ -113,19 +118,23 @@
 
         <div id="results" class="mt-4">
             <div class="result-card unhealthy-score">
-                <h3>Unhealthy High-Fat Diet Score</h3>
+                <h4>Unhealthy High-Fat Diet Score</h3>
                 <p>Score: <span id="unhealthyScore">0</span>/30</p>
-                <p>Total Mortality Risk: <span id="totalMortality">-</span></p>
-                <p>CVD Mortality Risk: <span id="cvdMortality">-</span></p>
+                
+                <h4>Healthy High-Fat Diet Score</h3>
+                <p>Score: <span id="healthyScore">0</span>/30</p>
             </div>
             
             <div class="result-card healthy-score mt-3">
-                <h3>Healthy High-Fat Diet Score</h3>
-                <p>Score: <span id="healthyScore">0</span>/30</p>
-                <p>Total Mortality Risk: <span id="totalMortality2">-</span></p>
-                <p>CVD Mortality Risk: <span id="cvdMortality2">-</span></p>
+                <p>Total Mortality Risk: <span id="totalMortality">-</span></p>
+                <p>CVD Mortality Risk: <span id="cvdMortality">-</span></p>
             </div>
         </div>
+
+        <footer class="text-center mt-4">
+            <p>Xiaomin Li, PhD. Department of Nutrition and Food Hygiene, Public Health College, Harbin Medical University, Harbin, PR China</p>
+            <p>E-mail address: <a href="mailto:202401107@hrbmu.edu.cn">202401107@hrbmu.edu.cn</a></p>
+        </footer>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

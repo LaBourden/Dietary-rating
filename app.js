@@ -239,15 +239,12 @@ function calculateScores() {
 
     // 更新UI
     document.getElementById('unhealthyScore').textContent = unhealthyScore;
+
+    document.getElementById('healthyScore').textContent = healthyScore;
+    
     document.getElementById('totalMortality').textContent = 
         calculateTotalMortalityRisk(healthyScore, unhealthyScore);
     document.getElementById('cvdMortality').textContent = 
-        calculateCVDMortalityRisk(healthyScore, unhealthyScore);
-
-    document.getElementById('healthyScore').textContent = healthyScore;
-    document.getElementById('totalMortality2').textContent = 
-        calculateTotalMortalityRisk(healthyScore, unhealthyScore);
-    document.getElementById('cvdMortality2').textContent = 
         calculateCVDMortalityRisk(healthyScore, unhealthyScore);
 }
 
