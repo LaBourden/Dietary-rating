@@ -83,11 +83,9 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center mb-4">Diet Score Calculator</h1>
+        <h1 class="text-center mb-4">High-Fat Diet Score Calculator</h1>
         
-        <div class="alert alert-info" role="alert">
-            Note: Weight is the estimated weight of food and beverages consumed over a 24-hour period, from midnight to midnight.
-        </div>
+
 
         <div class="mb-4">
             <label class="form-label">Gender</label>
@@ -105,12 +103,15 @@
                 <div class="col-md-4">
                     <input type="number" class="form-control food-weight" placeholder="Weight (g)">
                 </div>
+
                 <div class="col-md-2">
                     <button class="btn btn-danger remove-food">Delete</button>
                 </div>
             </div>
         </div>
-
+        <div class="alert alert-info" role="alert">
+            Weight refers to the estimated amount of food and beverages consumed over a 24-hour period, from midnight to midnight.
+        </div>
         <button id="addFood" class="btn btn-primary mt-3">Add Food</button>
         <button id="calculate" class="btn btn-success mt-3">Calculate Score</button>
 
@@ -118,16 +119,14 @@
 
         <div id="results" class="mt-4">
             <div class="result-card unhealthy-score">
-                <h4>Unhealthy High-Fat Diet Score</h3>
-                <p>Score: <span id="unhealthyScore">0</span>/30</p>
+                <h5>Unhealthy High-Fat Diet Score: <span id="unhealthyScore">0</span>/30</h5>
                 
-                <h4>Healthy High-Fat Diet Score</h3>
-                <p>Score: <span id="healthyScore">0</span>/30</p>
+                <h5>Healthy High-Fat Diet Score: <span id="healthyScore">0</span>/30</h5>
             </div>
             
             <div class="result-card healthy-score mt-3">
-                <p>Total Mortality Risk: <span id="totalMortality">-</span></p>
-                <p>CVD Mortality Risk: <span id="cvdMortality">-</span></p>
+                <h5>Total Mortality Risk: <span id="totalMortality">-</span></h5>
+                <h5>CVD Mortality Risk: <span id="cvdMortality">-</span></h5>
             </div>
         </div>
 
